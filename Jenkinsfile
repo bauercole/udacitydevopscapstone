@@ -7,10 +7,12 @@ pipeline {
         }
       }
       stage('Build Docker Image') {
-           docker.withDOckerRegistry([ credentialsId: "dockerhub", url: "" ]) {
+           steps {
+            withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
                     def customImage = docker.build("bauercole/udacitydevops:${env.BUILD_ID}")
                     customImage.push()
 		}
+           }
       }
     }
 }
