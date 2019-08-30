@@ -6,5 +6,8 @@ pipeline {
           sh 'hadolint Dockerfile'
         }
       }
+      stage('Build Docker Image') {
+          docker build --tag=bauercole/udacitydevops:capstone .
+      }
     }
 }
