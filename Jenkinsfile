@@ -7,7 +7,7 @@ pipeline {
         }
       }
       stage('Build Docker Image') {
-          sh docker build --tag=bauercole/udacitydevops .
+          sh 'docker build --tag=bauercole/udacitydevops .'
       }
     }
 }
