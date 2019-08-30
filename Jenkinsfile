@@ -14,7 +14,7 @@ pipeline {
       stage('upload Docker Image') {
           steps {
 	    withDockerRegistry([ credentialsId: "dockerhub", url: ""]){
-              sh 'docker push --tag=bauercole/udacitydevops .'
+              sh 'docker push bauercole/udacitydevops'
 	    }
           }
       }
