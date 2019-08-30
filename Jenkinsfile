@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { dockerfile true }
     stages {
       stage('Lint Dockerfile') {
         steps {
@@ -7,9 +7,12 @@ pipeline {
         }
       }
       stage('Build Docker Image') {
-          steps {
-              sh 'docker build --tag=bauercole/udacitydevops .'
-	  }
+        steps {
+          script {
+                    def customImage = docker.build("bauercole/udacitydevops:${env.BUILD_ID}")
+                    customImage.push()
+                }
+        }
       }
     }
 }
