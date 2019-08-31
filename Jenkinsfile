@@ -18,5 +18,10 @@ pipeline {
 	    }
           }
       }
+      stage('Run Kubernetes') {
+          steps {
+            sh 'kubectl run udacitycapstone --image=bauercole/udacitydevops --port 80'
+          }
+      }
     }
 }
